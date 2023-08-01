@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link >
+    <title>Envio de paquetes</title>
+  </head>
+  <body style="color: white; background-color: #1d2630" onload="fetchData()" >
+    <div class="container mt-5">
+      <div class="text-center">
+        <h1 class="display-5 mb-5">
+          <strong>Envio de paquetes</strong>
+        </h1>
+      </div>
+      <div class="main row justify-content-center">
+        <form
+          action=""
+          id="form-paquetes"
+          class="row justify-content-center mb-4"
+          autocomplete="off"
+        >
+          <div class="row">
+            <div class="col-6 mb-3">
+              <div class="col mb-3">
+                <label for="descripcion" class="mb-1"> Descripción </label>
+                <input
+                  class="form-control"
+                  id="descripcion"
+                  name="descripcion"
+                  placeholder="Ingrese una descripción"
+                  type="text"
+                />
+              </div>
+              <div class="col mb-3">
+                <label for="tarifaBase" class="mb-1"> Tarifa base </label>
+                <input
+                    name="tarifaBase"
+                  class="form-control"
+                  id="tarifaBase"
+                  placeholder="Ingrese un monto"
+                  type="number"
+                />
+              </div>
+              <div class="col mb-3">
+                <label for="peso" class="mb-1"> Peso (Kg) </label>
+                <input
+                    name="peso"
+                  class="form-control"
+                  id="peso"
+                  placeholder="Ingrese peso"
+                  type="number"
+                />
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="col mb-3">
+                <label for="cliente" class="mb-1"> Cliente </label>
+                <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between">
+                    <input
+                    style="width: 25%;"
+                      class="form-control "
+                      id="clientId"
+                      placeholder="Código"
+                      type="search"
+                    />
+                    <button style="width: 20%;" class="btn btn-outline-primary" type="button" style="background-color: white;" onclick="buscarCliente()" >Buscar</button>
+                    <input style="width: 50%; font-weight: 600;" class="form-control" id="client-name" type="text" readonly />
+                </div>
+              </div>
+              <div class="col-mb-3">
+                <label for="origen" class="mb-1"> Origen </label>
+                <select
+                name="idCiudadOrigen"
+                  class="form-select form-select mb-3"
+                  aria-label=".form-select example"
+                  id="origen"
+                >
+                  <option value=1 selected>Villa María</option>
+                  <option value=2>Córdoba</option>
+                  <option value=3>Rosario</option>
+                </select>
+              </div>
+              <div class="col-mb-3">
+                <label for="destino" class="mb-1"> Destino </label>
+                <select
+                name="idCiudadDestino"
+                  class="form-select form-select mb-3"
+                  aria-label=".form-select example"
+                  id="destino"
+                >
+                  <option value=1 selected>Villa María</option>
+                  <option value=2>Córdoba</option>
+                  <option value=3>Rosario</option>
+                </select>
+              </div>
+                  <button type="submit" class="btn btn-primary add-btn" style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true" style="display: none;" id="spinner-guardar"></span>
+                    <span>
+                      Guardar paquete    
+                    </span>
+                  </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="mt-4">
+          <table class="table table-dark">
+              <thead>
+                  <tr>
+                      <th>
+                          ID
+                      </th>
+                      <th>
+                          Fecha
+                      </th>
+                      <th>
+                          Descripción
+                      </th>
+                      <th>
+                          Cliente
+                      </th>
+                      <th>
+                          Tarifa base
+                      </th>
+                      <th>
+                          Peso
+                      </th>
+                      <th>
+                          Estado
+                      </th>
+                      <th>
+                          Origen
+                      </th>
+                      <th>
+                          Destino
+                      </th>
+                      <th>
+                          Tarifa final
+                      </th>
+                      <th>
+                          Acciones
+                      </th>
+                  </tr>
+              </thead>
+              <tbody id="table-body" >
+
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

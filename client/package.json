@@ -1,0 +1,11 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Cliente envio de paquetes",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "author": "",
+  "license": "ISC"
+}

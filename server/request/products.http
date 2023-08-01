@@ -1,0 +1,35 @@
+@paquetes = http://localhost:3000/packages
+@clientes = http://localhost:3000/clients
+@ciudades = http://localhost:3000/cities
+@estados = http://localhost:3000/states
+
+GET {{paquetes}}
+###
+GET {{clientes}}/1
+###
+GET {{ciudades}}
+###
+GET {{estados}}
+###
+POST {{paquetes}}
+Content-Type: application/json
+
+{
+    "descripcion": "Primer paquete",
+    "idCliente": 1,
+    "peso": 2,
+    "tarifaBase": 800,
+    "tarifaFinal": 1600,
+    "idEstado": 1,
+    "idCiudadDestino": 1,
+    "idCiudadOrigen": 2,
+    "fechaCarga": "1/8/2023, 1:53:01",
+  };
+
+###
+GET {{paquetes}}/1
+
+###
+DELETE {{paquetes}}/1
+
+###
