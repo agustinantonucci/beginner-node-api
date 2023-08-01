@@ -1,5 +1,8 @@
 const apiUrl = "http://localhost:3000";
 
+let idCliente = null;
+
+//Borra un paquete
 const deletePackage = (id) => {
   showSpinner(`spinner-eliminar-${id}`);
   fetch(`${apiUrl}/packages/${id}`, { method: "DELETE" })
@@ -14,6 +17,7 @@ const deletePackage = (id) => {
     .finally(() => hideSpinner(`spinner-eliminar-${id}`));
 };
 
+//Obtiene data y crea las filas de la tabla
 const fetchData = () => {
   fetch(`${apiUrl}/packages`)
     .then((response) => response.json())
@@ -33,12 +37,12 @@ const fetchData = () => {
               )}</td>
               <td>${element.descripcion}</td>
               <td>${element.nombreCliente}</td>
-              <td>${element.tarifaBase}</td>
+              <td>$${element.tarifaBase}</td>
               <td>${element.peso}</td>
               <td>${element.nombreEstado}</td>
               <td>${element.Origen}</td>
               <td>${element.Destino}</td>
-              <td>${element.tarifaFinal}</td>
+              <td>$${element.tarifaFinal}</td>
               <td> <a href="#" style="padding: 4px 8px; border-radius: 6px; background-color: #B73239; color: white; display:flex; width: fit-content;" onclick="deletePackage(${
                 element.idPaquete
               })" ><span id="spinner-eliminar-${element.idPaquete}"></span>
@@ -53,16 +57,17 @@ const fetchData = () => {
     .catch((error) => console.log("Error al obtener data: ", error));
 };
 
+//Muestra un spinner segun id
 const showSpinner = (id) => {
   document.getElementById(id).style.display = "inline";
 };
 
+//Esconde el spinner por id
 const hideSpinner = (id) => {
   document.getElementById(id).style.display = "none";
 };
 
-const clearInputs = () => {};
-
+//Muestra un texto momentaneo
 const showAlert = (message, className) => {
   const div = document.createElement("div");
   div.className = `alert alert-${className}`;
@@ -75,10 +80,7 @@ const showAlert = (message, className) => {
   setTimeout(() => document.querySelector(".alert").remove(), 2500);
 };
 
-let idCliente = null;
-
-let loadingGuardar = false;
-
+//Carga data del paquete
 const submitFormData = async (event) => {
   event?.preventDefault();
 
@@ -127,9 +129,12 @@ const submitFormData = async (event) => {
     .finally(() => hideSpinner("spinner-guardar"));
 };
 
+//Maneja el evento submit para el envio del formulario
 const form = document.getElementById("form-paquetes");
 form.addEventListener("submit", submitFormData);
 
+
+//Busca un cliente por id
 const buscarCliente = (event) => {
   const clientInput = document.getElementById("clientId");
 
